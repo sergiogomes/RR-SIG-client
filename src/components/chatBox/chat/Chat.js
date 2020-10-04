@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-import Infobar from "../InfoBar/InfoBar";
-import Input from "../Input/Input";
-import Messages from "../Messages/Messages";
+import Infobar from "../infoBar/InfoBar";
+import Input from "../input/Input";
+import Messages from "../messages/Messages";
 
 let socket;
 
