@@ -83,6 +83,7 @@ const Lobby = () => {
 
   const handleJoinButton = (item) => {
     if (
+      !name ||
       item.status === "private" ||
       item.status === "inGame" ||
       item.avaliable === item.slots
@@ -104,7 +105,14 @@ const Lobby = () => {
         </div>
         <div>
           <h4>Room list</h4>
-          <Table dark hover striped responsive size="sm">
+          <Table
+            dark
+            hover
+            striped
+            responsive
+            size="sm"
+            className="text-center"
+          >
             <thead>
               <tr>
                 <th>Status</th>
@@ -118,7 +126,7 @@ const Lobby = () => {
                 rooms.map((item) => (
                   <tr key={item.id}>
                     <td>{handleIcon(item)}</td>
-                    <td>{item.name}</td>
+                    <td className="text-left">{item.name}</td>
                     <td>
                       {item.avaliable}/{item.slots}
                     </td>
@@ -129,11 +137,7 @@ const Lobby = () => {
                         }
                         to={`/chat?name=${name}&room=${item.name}`}
                       >
-                        <Button
-                          disabled={handleJoinButton(item)}
-                          size="sm"
-                          color="link"
-                        >
+                        <Button disabled={handleJoinButton(item)} size="sm">
                           Join
                         </Button>
                       </Link>

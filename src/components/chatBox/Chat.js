@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Card, CardFooter, CardBody } from "reactstrap";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-import Infobar from "../infoBar/InfoBar";
-import Input from "../input/Input";
-import Messages from "../messages/Messages";
+import Infobar from "./components/InfoBar";
+import ChatBar from "./components/ChatBar";
+import Messages from "./components/Messages";
 
 let socket;
 
@@ -14,8 +15,8 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  // const ENDPOINT = "localhost:5000";
-  const ENDPOINT = "https://rr-sig.herokuapp.com/";
+  const ENDPOINT = "localhost:5000";
+  // const ENDPOINT = "https://rr-sig.herokuapp.com/";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -46,17 +47,19 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div>
-      <div>
-        <Infobar room={room} />
+    <Card>
+      <Infobar room={room} />
+      <CardBody>
         <Messages messages={messages} name={name} />
-        <Input
+      </CardBody>
+      <CardFooter>
+        <ChatBar
           message={message}
           setMessage={setMessage}
           sendMessage={sendMessage}
         />
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
 };
 

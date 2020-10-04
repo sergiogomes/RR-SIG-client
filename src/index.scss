@@ -1,0 +1,13 @@
+@import "mixin";
+
+.navbar {
+  @include box-shadow(2);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.height-300 {
+  height: 300px;
+}
