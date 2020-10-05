@@ -92,7 +92,7 @@ const Lobby = () => {
             onClick={(event) =>
               !name || !room ? event.preventDefault() : null
             }
-            to={`/chat?name=${name}&room=${room}`}
+            to={`/newmatch?name=${name}&room=${room}`}
           >
             <Button type="submit">Create Room</Button>
           </Link>

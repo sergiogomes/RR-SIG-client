@@ -11,7 +11,7 @@ const Infobar = ({ room }) => {
         <NavbarBrand>{room}</NavbarBrand>
       </Nav>
       <NavbarText>
-        <Link to={`/lobby`}>
+        <Link to={`/`}>
           <Button>
             <Icon name="x-circle" />
             <span> Leave </span>

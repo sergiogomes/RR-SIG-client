@@ -54,7 +54,7 @@ const RoomList = ({ name, rooms }) => {
                     onClick={(event) =>
                       handleJoinButton(item) ? event.preventDefault() : null
                     }
-                    to={`/chat?name=${name}&room=${item.name}`}
+                    to={`/newmatch?name=${name}&room=${item.name}`}
                   >
                     <Button disabled={handleJoinButton(item)} size="sm">
                       Join
