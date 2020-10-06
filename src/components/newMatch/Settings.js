@@ -11,13 +11,17 @@ const reigns = [
   { id: 6, name: "East Tribes", creatures: ["Orcs, Ogres"] },
 ];
 
-const Settings = ({ users, name, changeReign }) => {
+const Settings = ({ users, name, changeReign, changeReady }) => {
   const isFormValid = () => {
     return true;
   };
 
   const handleSelect = (event) => {
     changeReign(parseInt(event.target.value));
+  };
+
+  const handleCheck = (event) => {
+    changeReady(event.target.checked);
   };
 
   return (
@@ -50,7 +54,7 @@ const Settings = ({ users, name, changeReign }) => {
                 id="reigns"
                 bsSize="sm"
                 required
-                disabled={name !== user.name}
+                disabled={name !== user.name || user.ready}
                 value={user.reign}
                 onChange={handleSelect}
               >
@@ -73,6 +77,8 @@ const Settings = ({ users, name, changeReign }) => {
                 name="check"
                 id="readycheck"
                 required
+                checked={user.ready === undefined ? false : user.ready}
+                onChange={handleCheck}
                 disabled={name !== user.name}
               />{" "}
               <Label for="readycheck" check>
