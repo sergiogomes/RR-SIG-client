@@ -10,7 +10,7 @@ import NewMatch from "./components/newMatch/NewMatch";
 const App = () => (
   <Router>
     <Header />
-    <div className="container pt-4">
+    <div className="container-fluid pt-4">
       <Route path="/" exact component={Home} />
       <Route path="/lobby" component={Lobby} />
       <Route path="/newmatch" component={NewMatch} />

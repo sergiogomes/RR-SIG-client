@@ -55,7 +55,7 @@ const NewMatch = ({ location }) => {
 
   return (
     <div>
-      <Settings users={users} />
+      <Settings users={users} name={name.toLowerCase()} />
       <Chat
         name={name}
         room={room}
