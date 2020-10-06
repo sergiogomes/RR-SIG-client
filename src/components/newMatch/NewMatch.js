@@ -61,11 +61,15 @@ const NewMatch = ({ location }) => {
     socket.emit("changeReady", ready);
   };
 
+  const lowerCase = (value) => {
+    return value ? value.toLowerCase() : value;
+  };
+
   return (
     <div>
       <Settings
         users={users}
-        name={name.toLowerCase()}
+        name={lowerCase(name)}
         changeReign={changeReign}
         changeReady={changeReady}
       />

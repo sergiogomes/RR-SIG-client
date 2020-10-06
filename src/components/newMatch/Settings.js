@@ -12,8 +12,11 @@ const reigns = [
 ];
 
 const Settings = ({ users, name, changeReign, changeReady }) => {
-  const isFormValid = () => {
-    return true;
+  const waitUntilReady = () => {
+    for (const user of users) {
+      if (!user.ready) return true;
+    }
+    return false;
   };
 
   const handleSelect = (event) => {
@@ -88,7 +91,7 @@ const Settings = ({ users, name, changeReign, changeReady }) => {
           </Col>
         </Row>
       ))}
-      <Button disabled={isFormValid()}>Begin</Button>
+      <Button disabled={waitUntilReady()}>Begin</Button>
     </Form>
   );
 };
