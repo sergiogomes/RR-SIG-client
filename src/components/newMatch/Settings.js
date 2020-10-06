@@ -2,17 +2,22 @@ import React from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 
 const reigns = [
-  { id: 0, name: "Random" },
-  { id: 1, name: "Mankind" },
-  { id: 2, name: "Narnians" },
-  { id: 3, name: "Dark Forest" },
-  { id: 4, name: "Under the Mountain" },
-  { id: 5, name: "Northern Mages" },
+  { id: 0, name: "Random", creatures: ["Random"] },
+  { id: 1, name: "Mankind", creatures: ["Humans"] },
+  { id: 2, name: "Narnians", creatures: ["Centaurs, Fauns, Satirs"] },
+  { id: 3, name: "Dark Forest", creatures: ["Elfs"] },
+  { id: 4, name: "Under the Mountain", creatures: ["Dwarfs, Minotaurs"] },
+  { id: 5, name: "Northern Mages", creatures: ["Gremilings, Mages"] },
+  { id: 6, name: "East Tribes", creatures: ["Orcs, Ogres"] },
 ];
 
-const Settings = ({ users, name }) => {
+const Settings = ({ users, name, changeReign }) => {
   const isFormValid = () => {
     return true;
+  };
+
+  const handleSelect = (event) => {
+    changeReign(parseInt(event.target.value));
   };
 
   return (
@@ -46,9 +51,15 @@ const Settings = ({ users, name }) => {
                 bsSize="sm"
                 required
                 disabled={name !== user.name}
+                value={user.reign}
+                onChange={handleSelect}
               >
                 {reigns.map((reign) => (
-                  <option key={reign.id} value={reign.id}>
+                  <option
+                    key={reign.id}
+                    value={reign.id}
+                    title={reign.creatures}
+                  >
                     {reign.name}
                   </option>
                 ))}

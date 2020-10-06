@@ -53,9 +53,19 @@ const NewMatch = ({ location }) => {
     }
   };
 
+  const changeReign = (reign) => {
+    if (reign) {
+      socket.emit("changeReign", reign);
+    }
+  };
+
   return (
     <div>
-      <Settings users={users} name={name.toLowerCase()} />
+      <Settings
+        users={users}
+        name={name.toLowerCase()}
+        changeReign={changeReign}
+      />
       <Chat
         name={name}
         room={room}
